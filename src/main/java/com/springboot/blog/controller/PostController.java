@@ -1,6 +1,7 @@
 package com.springboot.blog.controller;
 
 import com.springboot.blog.payload.PostDto;
+import com.springboot.blog.payload.PostResponse;
 import com.springboot.blog.service.PostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +32,11 @@ public class PostController {
 
     //Get All posts REST API
     @GetMapping
-    public ResponseEntity<List<PostDto>> getAllPosts(
+    public ResponseEntity<PostResponse> getAllPosts(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
     ) {
-        List<PostDto> posts = postService.getAllPosts(pageNo, pageSize);
+        PostResponse posts = postService.getAllPosts(pageNo, pageSize);
 //        return new ResponseEntity<>(posts, HttpStatus.OK);
         return ResponseEntity.ok(posts);
     }
