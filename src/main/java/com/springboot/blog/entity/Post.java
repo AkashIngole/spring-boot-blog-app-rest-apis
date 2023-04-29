@@ -34,5 +34,6 @@ public class Post {
     private String content;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    // Here, "post" is field name present in Comment class.
     private Set<Comment> comments = new HashSet<>();
 }

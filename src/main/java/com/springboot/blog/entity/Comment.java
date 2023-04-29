@@ -18,10 +18,15 @@ public class Comment {
 
     @Column
     private String name;
+
+    @Column
     private String email;
+
+    @Column
     private String messageBody;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
+    // The post_id columm is created in comment table as foreign key.
     private Post post;
 }
